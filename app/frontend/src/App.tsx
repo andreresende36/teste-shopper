@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
-import CsvUploadComponent from './components/CsvUploadComponent';
 import './styles/App.css';
+import Home from './pages/Home';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={ < CsvUploadComponent/> } />
+      <Route path="/" element={ < Home/> } />
     </Routes>
   );
 }
