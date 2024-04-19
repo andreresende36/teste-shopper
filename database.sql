@@ -1,3 +1,6 @@
+CREATE SCHEMA shopper;
+USE shopper;
+
 CREATE TABLE products 
 ( 
 	code bigint PRIMARY KEY, # CODIGO DO PRODUTO 

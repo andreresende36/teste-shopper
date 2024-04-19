@@ -27,7 +27,7 @@ services:
         condition: service_healthy
     environment:
       MYSQL_USER: root
-      MYSQL_PASSWORD: password
+      MYSQL_PASSWORD: 123456
       MYSQL_HOST: db # Nome do service logo abaixo
       PORT: '3001'
       HOST: teste_shopper
