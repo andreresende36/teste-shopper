@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.get('/', (_request: Request, response: Response) => {
   response.send({
-    message: 'deu bom!',
+    message: 'OK',
   });
 });
 

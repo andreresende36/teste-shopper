@@ -1,9 +1,19 @@
+import { RowDataPacket } from 'mysql2';
+import camelize = require('camelize');
 import connection from './connection';
 import { ProductToUpdate } from '../Interfaces/product';
 
 const getAll = async () => {
   const [products] = await connection.execute('SELECT * FROM shopper.products');
-  return products;
+  return camelize(products);
+};
+
+const findByCode = async (code: number) => {
+  const [product] = await connection.execute(
+    'SELECT * FROM shopper.products WHERE code = ?;',
+    [code],
+  );
+  return (camelize(product) as unknown as RowDataPacket[])[0];
 };
 
 const update = async (productsToUpdate: ProductToUpdate[]) => {
@@ -20,5 +30,6 @@ const update = async (productsToUpdate: ProductToUpdate[]) => {
 
 export default {
   getAll,
+  findByCode,
   update,
 };

@@ -6,6 +6,14 @@ const getAll = async () => {
   return products;
 };
 
+const findByCode = async (code: number) => {
+  const product = await productsModel.findByCode(code);
+  if (!product || product.length === 0) {
+    return { type: 404, message: 'Código de produto não encontrado' };
+  }
+  return product;
+};
+
 const update = async (productsToUpdate: ProductToUpdate[]) => {
   await productsModel.update(productsToUpdate);
 };
@@ -13,4 +21,5 @@ const update = async (productsToUpdate: ProductToUpdate[]) => {
 export default {
   getAll,
   update,
+  findByCode,
 };
