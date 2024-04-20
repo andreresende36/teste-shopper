@@ -10,8 +10,8 @@ import validateExistsOnDb from "../utils/validateExistsOnDb";
 // import validateExistsOnDb from "../utils/validateExistsOnDb";
 
 function ValidateButton() {
-  const { csvData, csvFields, dbProducts } = useContext(AppContext);
-  const [tableError, setTableError] = useState<string>("");
+  const { csvData, csvFields, dbProducts, tableError, setTableError } =
+    useContext(AppContext);
   const [lineErrors, setLineErrors] = useState<LineErrors[]>([]);
   const handleValidation = async () => {
     const missingFields = validateFields(csvFields);
@@ -21,7 +21,7 @@ function ValidateButton() {
     }
 
     const errors1 = validateCodes(csvData);
-    const errors2 = validateTypePrices(csvData, errors1);   
+    const errors2 = validateTypePrices(csvData, errors1);
     const errors3 = validateFinancePrices(csvData, dbProducts, errors2);
     const errors4 = validateMarketingPrices(csvData, dbProducts, errors3);
     const errors5 = validateExistsOnDb(csvData, dbProducts, errors4);
@@ -29,7 +29,7 @@ function ValidateButton() {
   };
   return (
     <div>
-      <button onClick={handleValidation}>Validar</button>
+      <button disabled={!(tableError === '')} onClick={handleValidation}>Validar</button>
       {(tableError || lineErrors) && <p>{tableError}</p>}
     </div>
   );

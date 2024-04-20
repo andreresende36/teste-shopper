@@ -3,11 +3,18 @@ import { Product } from "../interfaces/product";
 import AppContext from "../context/AppContext";
 
 const CsvUpload: React.FC = () => {
-  const { setCsvData,  setCsvFields } = useContext(AppContext);
+  const { setCsvData,  setCsvFields, setTableError } = useContext(AppContext);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      const extension = file.name.split(".").pop()?.toLowerCase();
+      if (extension !== "csv") {
+        setTableError("O arquivo carregado não é um arquivo CSV.");
+        return;
+      } else {
+        setTableError('');
+      }
       const reader = new FileReader();
       reader.onload = (e) => {
         const contents = e.target?.result as string;

@@ -7,6 +7,7 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [csvData, setCsvData] = useState<Product[]>([]);
   const [dbProducts, setDbProducts] = useState<DbProduct[]>([]);
   const [csvFields, setCsvFields] = useState<string[]>([]);
+  const [tableError, setTableError] = useState<string>("");
 
   useEffect(() => {
     // Função para fazer a requisição GET'
@@ -31,9 +32,11 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     csvData,
     dbProducts,
     csvFields,
+    tableError,
     setCsvData,
     setDbProducts,
     setCsvFields,
+    setTableError
   };
 
   return (
