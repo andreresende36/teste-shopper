@@ -26,7 +26,7 @@ const validatePacksPrices = (
       return acc + price * qty;
     }, 0);
     
-    if (!(product.newPrice === sumProductsPrices)) {
+    if (!(product.newPrice === Number(sumProductsPrices.toFixed(2)))) {
       const error = lineErrors.find((i) => i.code === product.code);
       const message = `O preço do pacote ${
         product.code
