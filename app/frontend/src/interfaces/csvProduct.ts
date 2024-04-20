@@ -1,4 +1,4 @@
-export interface Product {
+export interface CsvProduct {
   code: number;
   newPrice: number;
 }

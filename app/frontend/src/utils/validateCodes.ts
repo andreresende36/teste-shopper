@@ -1,7 +1,7 @@
-import { Product } from "../interfaces/product";
+import { CsvProduct } from "../interfaces/csvProduct";
 import { LineErrors } from "../interfaces/lineErrors";
 
-const validateCodes = (csvData: Product[]) => {
+const validateCodes = (csvData: CsvProduct[]) => {
   const productCodes = new Set<number>();
   const invalidCodes: LineErrors[] = [];
 

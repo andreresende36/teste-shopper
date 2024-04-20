@@ -1,22 +1,12 @@
 import { DbProduct } from "../interfaces/dbProduct";
-import { Product } from "../interfaces/product";
+import { CsvProduct } from "../interfaces/csvProduct";
 import { LineErrors } from "../interfaces/lineErrors";
 
 const validateExistsOnDb = (
-  csvData: Product[],
+  csvData: CsvProduct[],
   dbProducts: DbProduct[],
   lineErrors: LineErrors[]
 ) => {
-  // const invalidCodes: LineErrors[] = [];
-  // csvData.forEach((product) => {
-  //   if (!dbProducts.some((i) => i.code === product.code))
-  //     invalidCodes.push({
-  //       code: product.code,
-  //       message: ["Produto não encontrado no banco de dados!"],
-  //     });
-  // });
-  // return [...lineErrors, ...invalidCodes];
-
   const invalidCodes: LineErrors[] = [];
   const MESSAGE =
   "Produto não encontrado no banco de dados!";

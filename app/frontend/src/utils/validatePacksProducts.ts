@@ -1,9 +1,9 @@
-import { Product } from "../interfaces/product";
+import { CsvProduct } from "../interfaces/csvProduct";
 import { LineErrors } from "../interfaces/lineErrors";
 import { DbPack } from "../interfaces/dbPack";
 
-const validatePacks = (
-  csvData: Product[],
+const validatePacksProducts = (
+  csvData: CsvProduct[],
   dbPacks: DbPack[],
   lineErrors: LineErrors[]
 ) => {
@@ -22,7 +22,11 @@ const validatePacks = (
     ].filter((id) => !csvDataMap.has(id));
     if (missingProducts.length === 0) return;
 
-    const message = `${product.code} e ${missingProducts.join(", ")}`;
+    const message = `O pacote ${
+      product.code
+    } exige que o(s) produto(s) ${missingProducts.join(
+      ", "
+    )} esteja(m) na planilha`;
     const error = lineErrors.find((i) => i.code === product.code);
 
     if (error && !error.message?.includes(message)) {
@@ -35,4 +39,4 @@ const validatePacks = (
   return [...lineErrors, ...Array.from(invalidCodes)];
 };
 
-export default validatePacks;
+export default validatePacksProducts;

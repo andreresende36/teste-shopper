@@ -1,8 +1,8 @@
-import { Product } from "../interfaces/product";
+import { CsvProduct } from "../interfaces/csvProduct";
 import { LineErrors } from "../interfaces/lineErrors";
 
 const validateTypePrices = (
-  csvData: Product[],
+  csvData: CsvProduct[],
   lineErrors: LineErrors[]
 ) => {
   const invalidCodes: LineErrors[] = [];

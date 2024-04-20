@@ -1,9 +1,9 @@
-import { Product } from "../interfaces/product";
+import { CsvProduct } from "../interfaces/csvProduct";
 import { LineErrors } from "../interfaces/lineErrors";
 import { DbProduct } from "../interfaces/dbProduct";
 
 const validateFinancePrices = (
-  csvData: Product[],
+  csvData: CsvProduct[],
   dbProducts: DbProduct[],
   lineErrors: LineErrors[]
 ) => {

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Product } from '../interfaces/product';
+import { CsvProduct } from '../interfaces/csvProduct';
 import { AppContextType } from '../interfaces/AppContextType';
 import AppContext from './AppContext';
 import { DbProduct } from '../interfaces/dbProduct';
 import { DbPack } from '../interfaces/dbPack';
 export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [csvData, setCsvData] = useState<Product[]>([]);
+  const [csvData, setCsvData] = useState<CsvProduct[]>([]);
   const [dbProducts, setDbProducts] = useState<DbProduct[]>([]);
   const [dbPacks, setDbPacks] = useState<DbPack[]>([]);
   const [csvFields, setCsvFields] = useState<string[]>([]);

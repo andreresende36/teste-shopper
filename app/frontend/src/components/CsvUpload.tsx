@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Product } from "../interfaces/product";
+import { CsvProduct } from "../interfaces/csvProduct";
 import AppContext from "../context/AppContext";
 
 const CsvUpload: React.FC = () => {
@@ -27,7 +27,7 @@ const CsvUpload: React.FC = () => {
   const parseCsv = (csv: string) => {
     const lines = csv.split("\n");
     setCsvFields(lines[0].replace("\r", "").split(","));
-    const products: Product[] = [];
+    const products: CsvProduct[] = [];
 
     for (let i = 1; i < lines.length; i++) {
       const line = lines[i].trim();
