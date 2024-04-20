@@ -1,50 +1,38 @@
-import React, { useState, useContext } from 'react'
-import AppContext from '../context/AppContext';
-import validateFields from '../utils/validateFields';
-import validateCodes from '../utils/validateCodes';
-import validatePrices from '../utils/validatePrices';
+import React, { useState, useContext } from "react";
+import AppContext from "../context/AppContext";
+import validateFields from "../utils/validateFields";
+import validateCodes from "../utils/validateCodes";
+import validateTypePrices from "../utils/validateTypePrices";
+import { LineErrors } from "../interfaces/lineErrors";
+import validateFinancePrices from "../utils/validateFinancePrices";
+import validateMarketingPrices from "../utils/validateMarketingPrices";
+import validateExistsOnDb from "../utils/validateExistsOnDb";
+// import validateExistsOnDb from "../utils/validateExistsOnDb";
 
 function ValidateButton() {
-  const { csvData, csvFields } = useContext(AppContext);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const handleValidation = () => {
+  const { csvData, csvFields, dbProducts } = useContext(AppContext);
+  const [tableError, setTableError] = useState<string>("");
+  const [lineErrors, setLineErrors] = useState<LineErrors[]>([]);
+  const handleValidation = async () => {
     const missingFields = validateFields(csvFields);
     if (missingFields.length > 0) {
-      setErrorMessage(
-        `Campos necessários ausentes: ${missingFields.join(", ")}`
-      );
+      setTableError(`Campos necessários ausentes: ${missingFields.join(", ")}`);
       return;
     }
 
-    const invalidCodes = validateCodes(csvData);
-    if (invalidCodes.length > 0) {
-      setErrorMessage(
-        `Códigos de produtos inválidos ou repetidos: ${invalidCodes.join(", ")}`
-      );
-      return;
-    }
-
-    const invalidPrices = validatePrices(csvData);
-    if (invalidPrices.length > 0) {
-      setErrorMessage(
-        `Preços inválidos para os seguintes códigos de produtos: ${invalidPrices.join(
-          ", "
-        )}`
-      );
-      return;
-    }
-
-    // Se todas as validações passarem, limpar a mensagem de erro
-    setErrorMessage(
-      "Arquivo de atualização de preços validado com sucesso! Clique em ATUALIZAR"
-    );
+    const errors1 = validateCodes(csvData);
+    const errors2 = validateTypePrices(csvData, errors1);   
+    const errors3 = validateFinancePrices(csvData, dbProducts, errors2);
+    const errors4 = validateMarketingPrices(csvData, dbProducts, errors3);
+    const errors5 = validateExistsOnDb(csvData, dbProducts, errors4);
+    setLineErrors(errors5);
   };
   return (
     <div>
       <button onClick={handleValidation}>Validar</button>
-      {errorMessage && <p>{errorMessage}</p>}
+      {(tableError || lineErrors) && <p>{tableError}</p>}
     </div>
   );
 }
 
-export default ValidateButton
+export default ValidateButton;
