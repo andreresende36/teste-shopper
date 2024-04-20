@@ -8,7 +8,7 @@ const validateFinancePrices = (
   lineErrors: LineErrors[]
 ) => {
   const invalidCodes: LineErrors[] = [];
-  const MESSAGE = "Novo preço menor que o preço de custo do produto!";
+  const MESSAGE = "Novo preço menor que o preço de custo do produto";
   
   csvData.forEach((product) => {
     const dbProduct = dbProducts.find((i) => i.code === product.code);

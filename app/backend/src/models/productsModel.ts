@@ -17,6 +17,7 @@ const findByCode = async (code: number) => {
 };
 
 const update = async (productsToUpdate: ProductToUpdate[]) => {
+  console.log(productsToUpdate);
   await Promise.all(
     productsToUpdate.map(async (product) => {
       const { code, newPrice } = product;

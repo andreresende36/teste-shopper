@@ -6,7 +6,7 @@ const validateTypePrices = (
   lineErrors: LineErrors[]
 ) => {
   const invalidCodes: LineErrors[] = [];
-  const MESSAGE = "Preço inválido!";
+  const MESSAGE = "Preço inválido";
   csvData.forEach((product) => {
     if (isNaN(product.newPrice)) {
       const error = lineErrors.find((i) => i.code === product.code);

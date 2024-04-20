@@ -19,7 +19,7 @@ const findByCode = async (req: Request, res: Response) => {
 const update = async (req: Request, res: Response) => {
   const productsToUpdate: ProductToUpdate[] = req.body;
   await productsService.update(productsToUpdate);
-  return res.status(204).json();
+  return res.status(200).json({ message: 'OK' });
 };
 
 export default {

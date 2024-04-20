@@ -4,7 +4,7 @@ import { useContext } from "react";
 import AppContext from "../context/AppContext";
 
 const Table: React.FC<{ rows: RowData[] }> = ({ rows }) => {
-  const { tableIsEnabled } = useContext(AppContext);
+  const { tableIsEnabled, lineErrors } = useContext(AppContext);
   const table = (
     <table>
       <thead>
@@ -13,6 +13,7 @@ const Table: React.FC<{ rows: RowData[] }> = ({ rows }) => {
           <th>Nome</th>
           <th>Preço Atual</th>
           <th>Novo Preço</th>
+          {lineErrors.length > 0 ? <th>Erros</th> : null}
         </tr>
       </thead>
       <tbody>

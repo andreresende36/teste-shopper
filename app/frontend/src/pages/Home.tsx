@@ -8,6 +8,7 @@ import { DbProduct } from "../interfaces/dbProduct";
 import { RowData } from "../interfaces/rowData";
 import UpdateButton from "../components/UpdateButton";
 import { formatPrice } from "../utils";
+import UpdateSuccess from "../components/UpdateSuccess";
 
 function Home() {
   const {
@@ -23,7 +24,7 @@ function Home() {
       code: product.code,
       name: dbProduct?.name ? dbProduct.name : "CÓDIGO INVÁLIDO",
       newPrice: formatPrice(String(product.newPrice)),
-      salesPrice: dbProduct?.salesPrice
+      salesPrice: dbProduct?.salesPrice 
         ? formatPrice(dbProduct.salesPrice)
         : "-",
     };
@@ -36,6 +37,7 @@ function Home() {
       <CsvUpload />
       <ValidateButton />
       <UpdateButton />
+      <UpdateSuccess />
     </>
   );
 }

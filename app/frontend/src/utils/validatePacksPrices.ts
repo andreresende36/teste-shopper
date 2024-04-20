@@ -1,11 +1,13 @@
 import { CsvProduct } from "../interfaces/csvProduct";
 import { LineErrors } from "../interfaces/lineErrors";
 import { DbPack } from "../interfaces/dbPack";
+import { DbProduct } from "../interfaces/dbProduct";
 
 const validatePacksPrices = (
   csvData: CsvProduct[],
   dbPacks: DbPack[],
-  lineErrors: LineErrors[]
+  dbProducts: DbProduct[],
+  lineErrors: LineErrors[],
 ) => {
   const invalidCodes = new Set<LineErrors>();
 
@@ -23,7 +25,9 @@ const validatePacksPrices = (
       const { productId, qty } = code;
       const price = csvData.find((i) => i.code === productId)
         ?.newPrice as number;
-      return acc + price * qty;
+      const dbPrice = Number(dbProducts.find((i) => i.code === productId)
+        ?.salesPrice) as number;
+      return acc + (price || dbPrice) * qty;
     }, 0);
     
     if (!(product.newPrice === Number(sumProductsPrices.toFixed(2)))) {

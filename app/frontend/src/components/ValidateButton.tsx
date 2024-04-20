@@ -22,7 +22,8 @@ function ValidateButton() {
     setTableIsEnabled,
     lineErrors,
     setLineErrors,
-    setUpdateIsEnabled
+    setUpdateIsEnabled,
+    validateIsEnabled
   } = useContext(AppContext);
 
   const handleValidation = async () => {
@@ -38,7 +39,7 @@ function ValidateButton() {
     errors = validateFinancePrices(csvData, dbProducts, errors);
     errors = validateMarketingPrices(csvData, dbProducts, errors);
     errors = validatePacksProducts(csvData, dbPacks, errors);
-    errors = validatePacksPrices(csvData, dbPacks, errors);
+    errors = validatePacksPrices(csvData, dbPacks, dbProducts, errors);
 
     setLineErrors(errors);
     if (errors.length === 0) setUpdateIsEnabled(true)
@@ -47,7 +48,7 @@ function ValidateButton() {
 
   return (
     <div>
-      <button disabled={!(tableError === "")} onClick={handleValidation}>
+      <button disabled={!validateIsEnabled} onClick={handleValidation}>
         VALIDAR
       </button>
       {(tableError || lineErrors.length > 0) && <p>{tableError}</p>}

@@ -12,11 +12,12 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [csvFields, setCsvFields] = useState<string[]>([]);
   const [tableError, setTableError] = useState<string>("");
   const [tableIsEnabled, setTableIsEnabled] = useState(false);
+  const [validateIsEnabled, setValidateIsEnabled] = useState(false);
   const [updateIsEnabled, setUpdateIsEnabled] = useState(false);
+  const [updateSuccess, setUpdateSuccess] = useState(false);
   const [lineErrors, setLineErrors] = useState<LineErrors[]>([]);
 
   useEffect(() => {
-    // Função para fazer a requisição GET'
     const fetchData = async () => {
       try {
         const responseProducts = await fetch("http://localhost:3001/products");
@@ -36,7 +37,6 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       }
     };
 
-    // Chamada da função de requisição ao carregar o componente
     fetchData();
   }, []);
 
@@ -49,6 +49,8 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     tableIsEnabled,
     lineErrors,
     updateIsEnabled,
+    updateSuccess,
+    validateIsEnabled,
     setCsvData,
     setDbProducts,
     setCsvFields,
@@ -56,7 +58,9 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setDbPacks,
     setTableIsEnabled,
     setLineErrors,
-    setUpdateIsEnabled
+    setUpdateIsEnabled,
+    setUpdateSuccess,
+    setValidateIsEnabled
   };
 
   return (

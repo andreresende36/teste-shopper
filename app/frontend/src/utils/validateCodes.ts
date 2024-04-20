@@ -10,7 +10,7 @@ const validateCodes = (csvData: CsvProduct[]) => {
       if (!invalidCodes.some((i) => i.code === product.code)) {      
         invalidCodes.push({
           code: product.code,
-          message: ['Código de produto repetido!']
+          message: ['Código de produto repetido']
         });
       }
     } else {

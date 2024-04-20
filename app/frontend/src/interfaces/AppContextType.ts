@@ -11,7 +11,9 @@ export interface AppContextType {
   dbPacks: DbPack[];
   tableIsEnabled: boolean;
   lineErrors: LineErrors[];
-  updateIsEnabled: boolean,
+  updateIsEnabled: boolean;
+  updateSuccess: boolean;
+  validateIsEnabled: boolean;
   setCsvData: React.Dispatch<React.SetStateAction<CsvProduct[]>>;
   setDbProducts: React.Dispatch<React.SetStateAction<DbProduct[]>>;
   setCsvFields: React.Dispatch<React.SetStateAction<string[]>>;
@@ -19,5 +21,7 @@ export interface AppContextType {
   setDbPacks: React.Dispatch<React.SetStateAction<DbPack[]>>;
   setTableIsEnabled: React.Dispatch<React.SetStateAction<boolean>>;
   setUpdateIsEnabled: React.Dispatch<React.SetStateAction<boolean>>;
+  setUpdateSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+  setValidateIsEnabled: React.Dispatch<React.SetStateAction<boolean>>;
   setLineErrors: React.Dispatch<React.SetStateAction<LineErrors[]>>;
 }

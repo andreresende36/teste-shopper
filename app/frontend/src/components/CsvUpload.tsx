@@ -3,7 +3,7 @@ import { CsvProduct } from "../interfaces/csvProduct";
 import AppContext from "../context/AppContext";
 
 const CsvUpload: React.FC = () => {
-  const { setCsvData,  setCsvFields, setTableError } = useContext(AppContext);
+  const { setCsvData,  setCsvFields, setTableError, setValidateIsEnabled } = useContext(AppContext);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -14,6 +14,7 @@ const CsvUpload: React.FC = () => {
         return;
       } else {
         setTableError('');
+        setValidateIsEnabled(true);
       }
       const reader = new FileReader();
       reader.onload = (e) => {

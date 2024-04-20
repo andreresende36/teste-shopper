@@ -19,24 +19,26 @@ const validatePacksProducts = (
     const missingProducts = [
       packs[0].packId,
       ...packs.map((pack) => pack.productId),
-    ].filter((id) => !csvDataMap.has(id));
-    if (missingProducts.length === 0) return;
-
-    const message = `O pacote ${
-      product.code
-    } exige que o(s) produto(s) ${missingProducts.join(
-      ", "
-    )} esteja(m) na planilha`;
-    const error = lineErrors.find((i) => i.code === product.code);
-
-    if (error && !error.message?.includes(message)) {
-      error.message?.push(message);
-    } else {
-      invalidCodes.add({ code: product.code, message: [message] });
-    }
+    ].filter((id) => !csvDataMap.has(id));   
+    
+    if ((missingProducts.length === packs.length)) {
+      const message = `O pacote ${
+        product.code
+      } exige que pelo menos um dos produtos ${missingProducts.join(
+        ", "
+      )} esteja na planilha`;
+      const error = lineErrors.find((i) => i.code === product.code);
+  
+      if (error && !error.message?.includes(message)) {
+        error.message?.push(message);
+      } else {
+        invalidCodes.add({ code: product.code, message: [message] });
+      }
+    };
   });
 
   return [...lineErrors, ...Array.from(invalidCodes)];
 };
 
 export default validatePacksProducts;
+

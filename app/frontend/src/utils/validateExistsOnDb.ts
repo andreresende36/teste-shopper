@@ -9,7 +9,7 @@ const validateExistsOnDb = (
 ) => {
   const invalidCodes: LineErrors[] = [];
   const MESSAGE =
-  "Produto não encontrado no banco de dados!";
+  "Código de produto inválido ou não encontrado no banco de dados";
   csvData.forEach((product) => {
     const dbProduct = dbProducts.find((i) => i.code === product.code);
     if (!dbProduct) {
