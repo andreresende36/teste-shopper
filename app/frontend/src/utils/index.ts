@@ -6,3 +6,4 @@ export { default as validateMarketingPrices } from './validateMarketingPrices';
 export { default as validatePacksPrices } from './validatePacksPrices';
 export { default as validatePacksProducts } from './validatePacksProducts';
 export { default as validateTypePrices } from './validateTypePrices';
+export { default as formatPrice } from './formatPrice';

@@ -4,12 +4,16 @@ import { AppContextType } from '../interfaces/AppContextType';
 import AppContext from './AppContext';
 import { DbProduct } from '../interfaces/dbProduct';
 import { DbPack } from '../interfaces/dbPack';
+import { LineErrors } from '../interfaces/lineErrors';
 export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [csvData, setCsvData] = useState<CsvProduct[]>([]);
   const [dbProducts, setDbProducts] = useState<DbProduct[]>([]);
   const [dbPacks, setDbPacks] = useState<DbPack[]>([]);
   const [csvFields, setCsvFields] = useState<string[]>([]);
   const [tableError, setTableError] = useState<string>("");
+  const [tableIsEnabled, setTableIsEnabled] = useState(false);
+  const [updateIsEnabled, setUpdateIsEnabled] = useState(false);
+  const [lineErrors, setLineErrors] = useState<LineErrors[]>([]);
 
   useEffect(() => {
     // Função para fazer a requisição GET'
@@ -42,11 +46,17 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     csvFields,
     tableError,
     dbPacks,
+    tableIsEnabled,
+    lineErrors,
+    updateIsEnabled,
     setCsvData,
     setDbProducts,
     setCsvFields,
     setTableError,
-    setDbPacks
+    setDbPacks,
+    setTableIsEnabled,
+    setLineErrors,
+    setUpdateIsEnabled
   };
 
   return (
