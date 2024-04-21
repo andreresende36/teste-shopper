@@ -40,7 +40,7 @@ function Home() {
           <Header />
           <Table rows={rows} />
           <CsvUpload />
-          <div className="my-2">
+          <div className="my-3">
             <TableError />
           </div>
           <UpdateSuccess />
