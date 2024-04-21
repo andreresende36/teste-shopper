@@ -1,8 +1,0 @@
-{
-  "scripts": {
-    "start": "npm install && cd ./app && docker-compose up -d"
-  },
-  "dependencies": {
-    "docker-compose": "^0.24.8"
-  }
-}
