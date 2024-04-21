@@ -15,12 +15,11 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
 VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*\d')
+mkdir /usr/local/bin/docker-compose
 DESTINATION=/usr/local/bin/docker-compose
 sudo curl -L https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
 sudo chmod 755 $DESTINATION
-sudo apt install npm
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
-sudo apt-get install -y nodejs
+sudo apt install nodejs npm
 cd ./app/frontend
 npm install
 cd ../app/backend
