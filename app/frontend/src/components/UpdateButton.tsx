@@ -9,8 +9,8 @@ function UpdateButton() {
     setTableIsEnabled,
     setCsvData,
     setValidateIsEnabled,
-    setUpdateIsEnabled
-
+    setUpdateIsEnabled,
+    tableError
   } = useContext(AppContext);
   const handleButton = async () => {
     const response = await fetch("http://localhost:3001/products", {
@@ -32,7 +32,7 @@ function UpdateButton() {
   return (
     <>
       <button
-        disabled={!updateIsEnabled}
+        disabled={!updateIsEnabled || tableError !== ''}
         onClick={handleButton}
         type="button"
         className={`font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none ${

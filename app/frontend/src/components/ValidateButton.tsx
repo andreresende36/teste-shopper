@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AppContext from "../context/AppContext";
 import {
   validateCodes,
@@ -16,20 +16,24 @@ function ValidateButton() {
     csvData,
     csvFields,
     dbProducts,
-    tableError,
     setTableError,
     dbPacks,
     setTableIsEnabled,
-    lineErrors,
     setLineErrors,
     setUpdateIsEnabled,
     validateIsEnabled,
+    tableError,
+    setValidateIsEnabled
   } = useContext(AppContext);
+  
+  useEffect(() => {
+    if(tableError !== '') setValidateIsEnabled(false)
+  }, [tableError, setValidateIsEnabled])
 
   const handleValidation = async () => {
     const missingFields = validateFields(csvFields);
     if (missingFields.length > 0) {
-      setTableError(`Campos necessários ausentes: ${missingFields.join(", ")}`);
+      setTableError(`Campo(s) necessário(s) ausente(s): ${missingFields.join(", ")}`);
       return;
     }
 
@@ -60,7 +64,6 @@ function ValidateButton() {
       >
         VALIDAR
       </button>
-      {(tableError || lineErrors.length > 0) && <p>{tableError}</p>}
     </div>
   );
 }

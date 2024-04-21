@@ -10,6 +10,7 @@ import UpdateButton from "../components/UpdateButton";
 import { formatPrice } from "../utils";
 import UpdateSuccess from "../components/UpdateSuccess";
 import Header from "../components/Header";
+import TableError from "../components/TableError";
 
 function Home() {
   const {
@@ -35,10 +36,13 @@ function Home() {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="m-auto">
-        <div className="flex flex-col justify-center items-center bg-neutral-500 p-12 bg-opacity-90 rounded-lg">
+        <div className="flex flex-col justify-center items-center bg-slate-500 p-12 bg-opacity-90 rounded-lg">
           <Header />
           <Table rows={rows} />
           <CsvUpload />
+          <div className="my-2">
+            <TableError />
+          </div>
           <UpdateSuccess />
           <div className="flex justify-center items-center">
             <ValidateButton />

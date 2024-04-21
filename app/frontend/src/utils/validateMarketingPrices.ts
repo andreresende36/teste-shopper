@@ -8,8 +8,8 @@ const validateMarketingPrices = (
   lineErrors: LineErrors[]
 ) => {
   const invalidCodes: LineErrors[] = [];
-  const MESSAGE =
-    "Reajuste maior ou menor do que 10% do preço atual do produto";
+  const message =
+    "Reajuste maior ou menor do que 10% do preço de venda atual do produto";
   csvData.forEach((product) => {
     const dbProduct = dbProducts.find((i) => i.code === product.code);
     if (
@@ -19,13 +19,13 @@ const validateMarketingPrices = (
       const error = lineErrors.find((i) => i.code === product.code);
 
       if (error) {
-        if (!error.message?.includes(MESSAGE)) {
-          error.message?.push(MESSAGE);
+        if (!error.message?.includes(message)) {
+          error.message?.push(message);
         }
       } else {
         invalidCodes.push({
           code: product.code,
-          message: [MESSAGE],
+          message: [message],
         });
       }
     }

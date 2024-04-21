@@ -32,11 +32,11 @@ const validatePacksPrices = (
     
     if (!(product.newPrice === Number(sumProductsPrices.toFixed(2)))) {
       const error = lineErrors.find((i) => i.code === product.code);
-      const message = `O preço do pacote ${
+      const message = `O novo preço do pacote ${
         product.code
-      } não é compatível com os novos preços dos produtos ${productsOnPack
+      } não é igual à soma do(s) preço(s) do(s) produto(s) ${productsOnPack
         .map((item) => item.productId)
-        .join(", ")}`;
+        .join(", ")}, respeitando sua(s) respectiva(s) quantidade(s) no pacote`;
       if (error) {
         if (!error.message?.includes(message)) {
           error.message?.push(message);
