@@ -1,46 +1,31 @@
-# Getting Started with Create React App
+# Teste Técnico Shopper.com.br - Sistema de Atualização de Preços
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1º Passo: Clonar repositório do GitHub
 
-## Available Scripts
+Para acessar a aplicação o primeiro passo é clonar o repositório do GitHub para seu repositório local por meio de linha de comando no seu terminal.
 
-In the project directory, you can run:
+### Via HTTPS
 
-### `npm start`
+`git clone https://github.com/andreresende36/teste-shopper.git`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Via SSH
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+`git clone git@github.com:andreresende36/teste-shopper.git`
 
-### `npm test`
+Obs.: caso não tenha o Git instalado, siga o passo a passo do seguinte link: [Tutorial de Instalação do Git](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Instalando-o-Git)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 2º Passo: Instalar o NodeJS e npm
 
-### `npm run build`
+Para rodar a aplicação o sistema precisa ter instalado o `NodeJS` e o `NPM`. Para isso siga o passos a passo do seguinte link de acordo com seu sistema operacional: [Tutorial de Instalação do NodeJS e NPM](https://balta.io/blog/node-npm-instalacao-configuracao-e-primeiros-passos)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Obs.: Caso tenha o NodeJS instalado, pule esse passo.**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 3º Passo: Comando de inicialização
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Rode o seguinte comando em seu terminal `npm start` e aguarde sua completa execução.
 
-### `npm run eject`
+Obs.: esse comando pode demorar um pouco para finalizar, pois além de instalar as dependências do projeto, ele cria e ativa contêineres Docker.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 4º Passo: Iniciar a aplicação Frontend em seu navegador
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Acesse o endereço [http://localhost:3000](http://localhost:3000) em seu navegador e use a aplicação! 😁
