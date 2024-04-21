@@ -13,22 +13,22 @@ const Table: React.FC<{ rows: RowData[] }> = ({ rows }) => {
             <table className="min-w-full text-left text-sm font-light">
               <thead className="border-b bg-white font-medium dark:border-[#07A776] dark:bg-[#1E2044]">
                 <tr>
-                  <th scope="col" className="px-6 py-4 text-white text-center">
+                  <th scope="col" className="px-6 py-4 text-white text-center text-lg">
                     Código
                   </th>
-                  <th scope="col" className="px-6 py-4 text-white text-center">
+                  <th scope="col" className="px-6 py-4 text-white text-center text-lg">
                     Nome
                   </th>
-                  <th scope="col" className="px-6 py-4 text-white text-center">
+                  <th scope="col" className="px-6 py-4 text-white text-center text-lg">
                     Preço Atual
                   </th>
-                  <th scope="col" className="px-6 py-4 text-white text-center">
+                  <th scope="col" className="px-6 py-4 text-white text-center text-lg">
                     Novo Preço
                   </th>
                   {lineErrors.length > 0 ? (
                     <th
                       scope="col"
-                      className="px-6 py-4 text-white text-center"
+                      className="px-6 py-4 text-white text-center text-lg"
                     >
                       Erros
                     </th>

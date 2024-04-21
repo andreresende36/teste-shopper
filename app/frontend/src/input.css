@@ -4,4 +4,9 @@
 
 :root{
   background-color: white;
+  background-image: url('../public/background.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

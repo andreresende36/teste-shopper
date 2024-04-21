@@ -9,6 +9,7 @@ import { RowData } from "../interfaces/rowData";
 import UpdateButton from "../components/UpdateButton";
 import { formatPrice } from "../utils";
 import UpdateSuccess from "../components/UpdateSuccess";
+import Header from "../components/Header";
 
 function Home() {
   const {
@@ -24,7 +25,7 @@ function Home() {
       code: product.code,
       name: dbProduct?.name ? dbProduct.name : "CÓDIGO INVÁLIDO",
       newPrice: formatPrice(String(product.newPrice)),
-      salesPrice: dbProduct?.salesPrice 
+      salesPrice: dbProduct?.salesPrice
         ? formatPrice(dbProduct.salesPrice)
         : "-",
     };
@@ -32,13 +33,20 @@ function Home() {
   });
 
   return (
-    <>
-      <Table rows={rows} />
-      <CsvUpload />
-      <ValidateButton />
-      <UpdateButton />
-      <UpdateSuccess />
-    </>
+    <div className="flex justify-center items-center h-screen">
+      <div className="m-auto">
+        <div className="flex flex-col justify-center items-center bg-neutral-400 p-12 bg-opacity-90 rounded-lg">
+          <Header />
+          <Table rows={rows} />
+          <CsvUpload />
+          <UpdateSuccess />
+          <div className="flex justify-center items-center">
+            <ValidateButton />
+            <UpdateButton />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

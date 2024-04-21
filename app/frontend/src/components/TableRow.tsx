@@ -11,20 +11,27 @@ const TableRow: React.FC<{ data: RowData }> = ({ data }) => {
       <td className="whitespace-nowrap px-6 text-white font-medium text-center p-3">
         {data.code}
       </td>
-      <td className="whitespace-nowrap px-6 text-white p-3 font-normal">{data.name}</td>
+      <td className={data.name ==='CÓDIGO INVÁLIDO'? 'whitespace-nowrap px-6 text-red-600 font-semibold p-3': 'whitespace-nowrap px-6 text-white p-3 font-normal'}>
+        {data.name}
+      </td>
       <td className="whitespace-nowrap px-6 text-white text-center font-medium p-3">
         {data.salesPrice}
       </td>
       <td className="whitespace-nowrap px-6 text-white text-center font-medium p-3">
         {data.newPrice}
       </td>
-          {lineErrors.length > 0 ? 
-            <td>
-              <ul>
-              { product?.message?.map((message: string, index: number) => (<li className="whitespace-nowrap px-6 text-white font-bold" key={index}>{`${index + 1}. ${message}`}</li>))}
-              </ul>
-            </td>
-          : null}
+      {lineErrors.length > 0 ? (
+          <td className="flex justify-center whitespace-nowrap text-center font-medium p-2">
+            <ul className="rounded bg-black border border-neutral-500 bg-opacity-50 w-fit">
+              {product?.message?.map((message: string, index: number) => (
+                <li
+                  className="whitespace-nowrap px-6 py-[0.30rem] font-bold text-red-600"
+                  key={index}
+                >{`${index + 1}. ${message}`}</li>
+              ))}
+            </ul>
+          </td>
+      ) : null}
     </tr>
   );
 };
