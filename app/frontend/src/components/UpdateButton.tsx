@@ -2,7 +2,16 @@ import { useContext } from "react";
 import AppContext from "../context/AppContext";
 
 function UpdateButton() {
-  const { updateIsEnabled, csvData, setUpdateSuccess, setTableIsEnabled } = useContext(AppContext);
+  const {
+    updateIsEnabled,
+    csvData,
+    setUpdateSuccess,
+    setTableIsEnabled,
+    setCsvData,
+    setValidateIsEnabled,
+    setUpdateIsEnabled
+
+  } = useContext(AppContext);
   const handleButton = async () => {
     const response = await fetch("http://localhost:3001/products", {
       method: "PUT",
@@ -13,8 +22,11 @@ function UpdateButton() {
     });
     const data = await response.json();
     if (data.message === "OK") {
+      setCsvData([]);
       setUpdateSuccess(true);
       setTableIsEnabled(false);
+      setValidateIsEnabled(false);
+      setUpdateIsEnabled(false)
     }
   };
   return (

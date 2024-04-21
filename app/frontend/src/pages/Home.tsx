@@ -35,7 +35,7 @@ function Home() {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="m-auto">
-        <div className="flex flex-col justify-center items-center bg-neutral-400 p-12 bg-opacity-90 rounded-lg">
+        <div className="flex flex-col justify-center items-center bg-neutral-500 p-12 bg-opacity-90 rounded-lg">
           <Header />
           <Table rows={rows} />
           <CsvUpload />

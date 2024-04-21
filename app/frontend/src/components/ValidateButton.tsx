@@ -24,11 +24,9 @@ function ValidateButton() {
     setLineErrors,
     setUpdateIsEnabled,
     validateIsEnabled,
-    setUpdateSuccess
   } = useContext(AppContext);
 
   const handleValidation = async () => {
-    setUpdateSuccess(false)
     const missingFields = validateFields(csvFields);
     if (missingFields.length > 0) {
       setTableError(`Campos necessários ausentes: ${missingFields.join(", ")}`);
@@ -45,7 +43,7 @@ function ValidateButton() {
 
     setLineErrors(errors);
     if (errors.length === 0) setUpdateIsEnabled(true);
-    setTableIsEnabled(true);
+    if (csvData.length !== 0) setTableIsEnabled(true);
   };
 
   return (
