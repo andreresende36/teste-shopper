@@ -7,18 +7,24 @@ const TableRow: React.FC<{ data: RowData }> = ({ data }) => {
   const { lineErrors } = useContext(AppContext);
   const product = lineErrors.find((i: LineErrors) => i.code === data.code);
   return (
-    <tr>
-      <td>{data.code}</td>
-      <td>{data.name}</td>
-      <td>{data.salesPrice}</td>
-      <td>{data.newPrice}</td>
-      <td>
-        <ul>
-          {product?.message?.map((message: string, index: number) => (
-            <li key={index}>{message}</li>
-          ))}
-        </ul>
+    <tr className="border-b-[0.1rem] border-green-900 dark:bg-[#37866f] bg-gradient-to-r from-[#185c48] m-10">
+      <td className="whitespace-nowrap px-6 text-white font-medium text-center p-3">
+        {data.code}
       </td>
+      <td className="whitespace-nowrap px-6 text-white p-3 font-normal">{data.name}</td>
+      <td className="whitespace-nowrap px-6 text-white text-center font-medium p-3">
+        {data.salesPrice}
+      </td>
+      <td className="whitespace-nowrap px-6 text-white text-center font-medium p-3">
+        {data.newPrice}
+      </td>
+          {lineErrors.length > 0 ? 
+            <td>
+              <ul>
+              { product?.message?.map((message: string, index: number) => (<li className="whitespace-nowrap px-6 text-white font-bold" key={index}>{`${index + 1}. ${message}`}</li>))}
+              </ul>
+            </td>
+          : null}
     </tr>
   );
 };

@@ -3,9 +3,10 @@ import { CsvProduct } from "../interfaces/csvProduct";
 import AppContext from "../context/AppContext";
 
 const CsvUpload: React.FC = () => {
-  const { setCsvData,  setCsvFields, setTableError, setValidateIsEnabled } = useContext(AppContext);
+  const { setCsvData,  setCsvFields, setTableError, setValidateIsEnabled, setTableIsEnabled } = useContext(AppContext);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTableIsEnabled(false);    
     const file = event.target.files?.[0];
     if (file) {
       const extension = file.name.split(".").pop()?.toLowerCase();
