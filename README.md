@@ -1,3 +1,5 @@
+![logo](https://i.imgur.com/CkskpKS.png)
+
 # Teste Técnico Shopper.com.br - Sistema de Atualização de Preços
 
 ## 1º Passo: Clonar repositório do GitHub
