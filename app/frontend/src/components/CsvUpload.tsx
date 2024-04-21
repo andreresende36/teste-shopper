@@ -14,7 +14,6 @@ const CsvUpload: React.FC = () => {
     updateSuccess
   } = useContext(AppContext);
 
-  // Create a ref to store the file input element
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,7 +68,7 @@ const CsvUpload: React.FC = () => {
 
   const clearFileInput = () => {
     if (fileInputRef.current) {
-      fileInputRef.current.value = ""; // Clear the file selection
+      fileInputRef.current.value = "";
     }
   };
 
@@ -81,19 +80,14 @@ const CsvUpload: React.FC = () => {
 
   return (
     <div className="relative mt-3 flex justify-center items-center">
-      <label
-        htmlFor="formFile"
-        className="mb-2 inline-block text-neutral-700 dark:text-neutral-200"
-      >
         <input
           id="formFile"
           type="file"
           accept=".csv"
           onChange={handleFileUpload}
-          ref={fileInputRef} // Assign the ref to the input element
-          className="bg-slate-100 m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-white file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-green-800 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-black dark:file:bg-green-700 dark:file:text-white dark:file:font-semibold dark:focus:border-primary"
+          ref={fileInputRef}
+          className="file-input file-input-bordered file-input-success w-[40rem]"
         />
-      </label>
     </div>
   );
 }
