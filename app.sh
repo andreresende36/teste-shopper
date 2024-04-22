@@ -1,6 +1,3 @@
 #!/bin/sh
-cd ./app/frontend
-npm install
-cd ../app/backend
-npm install
+cd ./app
 docker-compose up -d
