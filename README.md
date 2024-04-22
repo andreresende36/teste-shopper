@@ -40,8 +40,14 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo usermod -aG docker $USER
 newgrp docker
-sudo apt install docker-compose
+VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq .name -r)
+DESTINATION=/usr/local/bin/docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
+sudo chmod 755 $DESTINATION
+sudo apt install gnome-keyring
 ```
+
+### Obs.: Para o Docker-compose funcionar, após a instalação acima você deve abrir outra janela do terminal para continuar os passos abaixo.
 
 ## 3º Passo: Comando de inicialização
 
@@ -55,4 +61,4 @@ Obs.: esse comando pode demorar um pouco para finalizar, pois além de instalar 
 
 ## 4º Passo: Iniciar a aplicação Frontend em seu navegador
 
-Acesse o endereço [http://localhost:3000](http://localhost:3000) em seu navegador e use a aplicação! 😁
+### Acesse o endereço [http://localhost:3000](http://localhost:3000) em seu navegador e use a aplicação! 😁
