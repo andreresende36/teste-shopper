@@ -18,7 +18,7 @@ Obs.: caso não tenha o Git instalado, siga o passo a passo do seguinte link: [T
 
 ## 2º Passo: Instalar o Docker
 
-Para rodar a aplicação o sistema precisa ter instalado o `Docker 26.0.2 ou superior` e o `Docker-compose`. Para isso siga o passo a passo dos links abaixo de acordo com seu sistema operacional:
+Para rodar a aplicação o sistema precisa ter instalado o `Docker 24.0.2 ou superior` e o `Docker-compose`. Para isso siga o passo a passo dos links abaixo de acordo com seu sistema operacional:
 
 [Tutorial de Instalação do Docker](https://docs.docker.com/engine/install/)
 
