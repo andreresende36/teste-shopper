@@ -1,46 +1,62 @@
-# Getting Started with Create React App
+# Teste Técnico Shopper.com.br - Sistema de Atualização de Preços
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1º Passo: Clonar repositório do GitHub
 
-## Available Scripts
+Para acessar a aplicação o primeiro passo é clonar o repositório do GitHub para seu repositório local.
 
-In the project directory, you can run:
+### Via HTTPS
 
-### `npm start`
+Para clonar utilize o comando abaixo:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+git clone https://github.com/andreresende36/teste-shopper.git
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Obs.: caso não tenha o Git instalado, siga o passo a passo do seguinte link: [Tutorial de Instalação do Git](https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Instalando-o-Git)
 
-### `npm test`
+## 2º Passo: Instalar o Docker
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para rodar a aplicação o sistema precisa ter instalado o `Docker 24.0.2 ou superior` e o `Docker-compose`. Para isso siga o passo a passo dos links abaixo de acordo com seu sistema operacional:
 
-### `npm run build`
+[Tutorial de Instalação do Docker](https://docs.docker.com/engine/install/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[Tutorial de Instalação do Docker-compose](https://docs.docker.com/compose/install/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Caso você use uma distribuição Linux baseada em Debian (Ubuntu, POP OS, Linux Lite, etc), você pode seguir o passo a passo copiando e executando em seu terminal cada um dos comandos abaixo:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$UBUNTU_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo usermod -aG docker $USER
+newgrp docker
+VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq .name -r)
+DESTINATION=/usr/local/bin/docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
+sudo chmod 755 $DESTINATION
+sudo apt install gnome-keyring
+```
 
-### `npm run eject`
+### Obs.: Para o Docker-compose funcionar, após a instalação acima você deve abrir outra janela do terminal para continuar os passos abaixo.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 3º Passo: Comando de inicialização
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Agora é só entrar na pasta do projeto e rodar o script `app.sh`. O comando está abaixo:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+cd teste-shopper/ && sh app.sh
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Obs.: esse comando pode demorar um pouco para finalizar, pois além de instalar as dependências do projeto, ele cria e ativa contêineres Docker.
 
-## Learn More
+## 4º Passo: Iniciar a aplicação Frontend em seu navegador
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Acesse o endereço [http://localhost:3000](http://localhost:3000) em seu navegador e use a aplicação! 😁
