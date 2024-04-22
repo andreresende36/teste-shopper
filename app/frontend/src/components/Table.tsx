@@ -11,7 +11,7 @@ const Table: React.FC<{ rows: RowData[] }> = ({ rows }) => {
         <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
           <div className="overflow-hidden rounded-2xl border">
             <table className="min-w-full text-left text-sm font-light">
-              <thead className="border-b bg-white font-medium dark:border-[#07A776] dark:bg-[#1E2044]">
+              <thead className="border-b font-medium border-[#07A776] bg-[#1E2044]">
                 <tr>
                   <th scope="col" className="px-6 py-4 text-white text-center text-lg">
                     Código

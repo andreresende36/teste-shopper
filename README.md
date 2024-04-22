@@ -16,7 +16,7 @@ Obs.: caso não tenha o Git instalado, siga o passo a passo do seguinte link: [T
 
 ## 2º Passo: Instalar o Docker
 
-Para rodar a aplicação o sistema precisa ter instalado o `Docker 26.0.2 ou superior` e o `Docker-compose`. Para isso siga o passo a passo dos links abaixo de acordo com seu sistema operacional:
+Para rodar a aplicação o sistema precisa ter instalado o `Docker 24.0.2 ou superior` e o `Docker-compose`. Para isso siga o passo a passo dos links abaixo de acordo com seu sistema operacional:
 
 [Tutorial de Instalação do Docker](https://docs.docker.com/engine/install/)
 
@@ -38,8 +38,14 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo usermod -aG docker $USER
 newgrp docker
-sudo apt install docker-compose
+VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | jq .name -r)
+DESTINATION=/usr/local/bin/docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
+sudo chmod 755 $DESTINATION
+sudo apt install gnome-keyring
 ```
+
+### Obs.: Para o Docker-compose funcionar, após a instalação acima você deve abrir outra janela do terminal para continuar os passos abaixo.
 
 ## 3º Passo: Comando de inicialização
 
@@ -53,4 +59,4 @@ Obs.: esse comando pode demorar um pouco para finalizar, pois além de instalar 
 
 ## 4º Passo: Iniciar a aplicação Frontend em seu navegador
 
-Acesse o endereço [http://localhost:3000](http://localhost:3000) em seu navegador e use a aplicação! 😁
+### Acesse o endereço [http://localhost:3000](http://localhost:3000) em seu navegador e use a aplicação! 😁
