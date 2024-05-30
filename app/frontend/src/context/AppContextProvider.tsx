@@ -5,6 +5,7 @@ import AppContext from './AppContext';
 import { DbProduct } from '../interfaces/dbProduct';
 import { DbPack } from '../interfaces/dbPack';
 import { LineErrors } from '../interfaces/lineErrors';
+import BACKEND_URL from '../endpoints';
 export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [csvData, setCsvData] = useState<CsvProduct[]>([]);
   const [dbProducts, setDbProducts] = useState<DbProduct[]>([]);
@@ -20,8 +21,8 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const responseProducts = await fetch("http://localhost:3001/products");
-        const responsePacks = await fetch("http://localhost:3001/packs");
+        const responseProducts = await fetch(`${BACKEND_URL}products`);
+        const responsePacks = await fetch(`${BACKEND_URL}packs`);
         if (!responseProducts) {
           throw new Error("Não foi possível carregar os produtos.");
         }
@@ -38,7 +39,7 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     };
 
     fetchData();
-  }, []);
+  }, [updateSuccess]);
 
   const value: AppContextType = {
     csvData,

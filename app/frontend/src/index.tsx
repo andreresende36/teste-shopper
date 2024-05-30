@@ -10,8 +10,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <div
-    // className="bg-fixed bg-center bg-no-repeat bg-cover blur"
-    // style={{ backgroundImage: "url('background.jpg')" }}
   >
     <AppContextProvider>
       <BrowserRouter>

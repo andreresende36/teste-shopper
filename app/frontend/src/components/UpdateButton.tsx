@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import AppContext from "../context/AppContext";
+import BACKEND_URL from "../endpoints";
 
 function UpdateButton() {
   const {
@@ -13,7 +14,7 @@ function UpdateButton() {
     tableError
   } = useContext(AppContext);
   const handleButton = async () => {
-    const response = await fetch("http://localhost:3001/products", {
+    const response = await fetch(`${BACKEND_URL}products`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
